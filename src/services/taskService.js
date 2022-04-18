@@ -1,11 +1,11 @@
-import http from "./httpService";
-import config from "../config.json";
+import http from './httpService';
+import config from '../config.json';
 
 const { apiUrl } = config;
-const apiEndpoint = apiUrl + "/task";
+const apiEndpoint = apiUrl + '/task';
 
 function getApiUrl(url) {
-  return apiEndpoint + "/" + url;
+  return apiEndpoint + '/' + url;
 }
 
 const getAllTasks = async () => {
@@ -16,13 +16,13 @@ const getAllTasks = async () => {
 
 const getMyTasks = async () => {
   http.setJwt();
-  const { data } = await http.get(getApiUrl("my-tasks"));
+  const { data } = await http.get(getApiUrl('my-tasks'));
   return data.payload;
 };
 
 const getPendingTasks = async () => {
   http.setJwt();
-  const { data } = await http.get(getApiUrl("pendings"));
+  const { data } = await http.get(getApiUrl('pendings'));
   return data.payload;
 };
 
@@ -47,7 +47,7 @@ const updateTask = async (task) => {
 const deleteTask = async (taskId) => {
   http.setJwt();
   const { data } = await http.delete(getApiUrl(taskId));
-  return data.payload;
+  return data.payload.id;
 };
 
 const completeTask = async (taskId) => {

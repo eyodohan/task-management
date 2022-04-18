@@ -13,14 +13,13 @@ import NotFound from './components/NotFound';
 import { useSelector } from 'react-redux';
 
 function App() {
-  const userData = useSelector((state) => state.auth.userData);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const getUser = () => localStorage.getItem('auth');
 
-  // console.log(user);
   useEffect(() => {
     getUser();
-  }, [userData]);
+  }, [isLoggedIn]);
 
   return (
     <>
@@ -28,10 +27,10 @@ function App() {
       <Navbar />
       <div className='container mt-3'>
         <Routes>
-          <Route path='/' element={<LoginForm />} />
-          {userData && (
+          <Route path='/' element={!isLoggedIn ? <LoginForm /> : <Tasks />} />
+          {isLoggedIn && (
             <>
-              <Route path='/' element={<Navigate replace to='/tasks' />} />
+              <Route path='/' element={<Navigate to='/tasks' />} />
               <Route path='tasks' element={<Tasks />} />
               <Route path='taskDetail/:id' element={<TaskDetail />} />
               <Route path='newTask' element={<NewTask />} />

@@ -99,11 +99,7 @@ const slice = createSlice({
       tasks.list[index] = action.payload;
     },
     taskDeleted: (tasks, action) => {
-      // çalışmıyor...
-      const newTaskList = { ...tasks };
-      newTaskList.list.filter((task) => task.id !== action.payload.id);
-      tasks = newTaskList;
-      console.log(action.payload);
+      tasks.list = tasks.list.filter((task) => task.id !== action.payload);
       tasks.loading = false;
     },
     taskCreated: (tasks, action) => {
