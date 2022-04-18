@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import auth from "../services/authService";
-import UsersList from "./UsersList";
+import React, { useEffect, useState } from 'react';
+import auth from '../services/authService';
+import UsersList from './UsersList';
 
 const Users = () => {
   const [users, setUsers] = useState(null);
@@ -10,7 +10,6 @@ const Users = () => {
   }, []);
   const getAllUsers = async () => {
     const allUsers = await auth.getAllUsers();
-    console.log(allUsers);
     setUsers(allUsers);
     setShowBtn(false);
   };

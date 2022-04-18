@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
-import task from "../services/taskService";
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router';
+import task from '../services/taskService';
 
 const TaskDetail = () => {
   const [data, setData] = useState(null);
@@ -11,7 +11,6 @@ const TaskDetail = () => {
   }, []);
   const getTaskDetail = async () => {
     const taskDetail = await task.getTask(id);
-    console.log(taskDetail);
     setData(mapToViewModel(taskDetail));
   };
 
@@ -27,22 +26,22 @@ const TaskDetail = () => {
   }
 
   const handleClick = () => {
-    navigate("/tasks");
+    navigate('/tasks');
   };
 
   return (
     <>
       <h4>Task {id} Details</h4>
 
-      <table className="table">
+      <table className='table'>
         <thead>
           <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Username</th>
-            <th scope="col">Date</th>
-            <th scope="col">Assigned Department</th>
-            <th scope="col">Status</th>
+            <th scope='col'>Title</th>
+            <th scope='col'>Description</th>
+            <th scope='col'>Username</th>
+            <th scope='col'>Date</th>
+            <th scope='col'>Assigned Department</th>
+            <th scope='col'>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -56,7 +55,7 @@ const TaskDetail = () => {
           </tr>
         </tbody>
       </table>
-      <button className="btn btn-success" onClick={handleClick}>
+      <button className='btn btn-success' onClick={handleClick}>
         Back Tasks
       </button>
     </>

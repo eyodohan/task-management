@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from 'react';
 
 const UsersList = ({ users }) => {
   return (
     <>
       <h4>All Users</h4>
-      <table className="table">
+      <table className='table'>
         <thead>
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Title</th>
-            <th scope="col">Email</th>
-            <th scope="col">Department</th>
+            <th scope='col'>Name</th>
+            <th scope='col'>Title</th>
+            <th scope='col'>Email</th>
+            <th scope='col'>Department</th>
           </tr>
         </thead>
         <tbody>

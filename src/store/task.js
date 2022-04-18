@@ -5,7 +5,6 @@ export const getTasks = createAsyncThunk(
   'tasks/getAllTasks',
   async (task, { dispatch }) => {
     const res = await taskService.getAllTasks();
-    console.log(res);
     dispatch(tasksReceived(res));
   }
 );
@@ -29,26 +28,21 @@ export const departmentTasks = createAsyncThunk(
 export const createTask = createAsyncThunk(
   'tasks/createTask',
   async (task, { dispatch }) => {
-    console.log(task);
     const res = await taskService.createTask(task);
     dispatch(taskCreated(task));
-    console.log(res);
   }
 );
 export const updateTask = createAsyncThunk(
   'tasks/updateTask',
   async (task, { dispatch }) => {
-    console.log(task);
     const res = await taskService.updateTask(task);
     dispatch(taskUpdated(task));
-    console.log(res);
     return res;
   }
 );
 export const completeTask = createAsyncThunk(
   'tasks/completeTask',
   async (taskId, { dispatch }) => {
-    console.log(taskId);
     const res = await taskService.completeTask(taskId);
     dispatch(taskCompleted(res));
   }
@@ -59,7 +53,6 @@ export const deleteTask = createAsyncThunk(
   async (taskId, { dispatch }) => {
     const res = await taskService.deleteTask(taskId);
     dispatch(taskDeleted(res));
-    console.log(res);
   }
 );
 
@@ -122,19 +115,6 @@ const slice = createSlice({
       tasks.loading = false;
     },
   },
-  // extraReducers: {
-  //   [getTasks.pending]: (tasks) => {
-  //     tasks.loading = true;
-  //   },
-  //   [getTasks.fulfilled]: (tasks, { payload }) => {
-  //     tasks.loading = false;
-  //     // tasks.list = payload;
-  //     console.log(payload);
-  //   },
-  //   [getTasks.rejected]: (tasks) => {
-  //     tasks.loading = false;
-  //   },
-  // },
 });
 
 const {
@@ -146,19 +126,5 @@ const {
   taskCompleted,
   taskDeleted,
   taskRejected,
-  tasksRequestFailed,
 } = slice.actions;
 export default slice.reducer;
-
-// export const getAllTasks = () =>
-//   apiCallBegan({
-//     url: "/task",
-//     onStart: taskRequested.type,
-//     onSuccess: tasksReceived.type,
-//     onError: tasksRequestFailed.type,
-//     headers: {
-//       Authorization: `Bearer ${
-//         JSON.parse(localStorage.getItem("auth")).jwtToken
-//       }`,
-//     },
-//   });
